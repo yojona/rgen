@@ -1,0 +1,37 @@
+# RGEN "small" — ~111M params, Apple Silicon target
+# Matches section 3.1 defaults
+
+vocab_size: 32000
+d_model: 512
+
+# Reasoner
+reasoner_layers: 2
+reasoner_heads: 8
+reasoner_d_ff: 1024
+reasoner_iterations: 1  # K=1 for phase 1 pretraining (fast); K=8 in phase 2
+reasoner_max_iterations: 16
+
+# Generator
+generator_layers: 6
+generator_heads: 8
+generator_d_ff: 2048
+max_seq_len: 512  # 2048 OOMs on MPS; train at 512, fine-tune at 2048 with RoPE
+
+# Model training params
+dropout: 0.1
+norm_eps: 1.0e-5
+lambda_reconstruction: 0.1
+lambda_diversity: 0.01
+
+# Training loop (section 5.5 — phase 1)
+batch_size: 4
+gradient_accumulation_steps: 16
+learning_rate: 3.0e-4
+min_lr: 3.0e-5
+warmup_steps: 2000
+max_steps: 100000
+weight_decay: 0.1
+generator_only_steps: 5000
+reasoner_warmup_steps: 20000
+log_interval: 100
+save_interval: 5000

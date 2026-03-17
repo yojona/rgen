@@ -1,0 +1,24 @@
+# Data
+data/raw/
+data/tokenized/
+data/tokenizer/
+
+# Checkpoints and logs
+checkpoints/
+logs/
+*.bin
+*.pt
+
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store

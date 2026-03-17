@@ -1,0 +1,37 @@
+# RGEN "tiny" — ~30M params, fast experiments
+# Reduced dimensions for quick iteration
+
+vocab_size: 32000
+d_model: 256
+
+# Reasoner
+reasoner_layers: 2
+reasoner_heads: 4
+reasoner_d_ff: 512
+reasoner_iterations: 4
+reasoner_max_iterations: 8
+
+# Generator
+generator_layers: 4
+generator_heads: 4
+generator_d_ff: 1024
+max_seq_len: 512
+
+# Model training params
+dropout: 0.1
+norm_eps: 1.0e-5
+lambda_reconstruction: 0.1
+lambda_diversity: 0.01
+
+# Training loop
+batch_size: 4
+gradient_accumulation_steps: 8
+learning_rate: 3.0e-4
+min_lr: 3.0e-5
+warmup_steps: 200
+max_steps: 2000
+weight_decay: 0.1
+generator_only_steps: 500
+reasoner_warmup_steps: 1000
+log_interval: 50
+save_interval: 1000
